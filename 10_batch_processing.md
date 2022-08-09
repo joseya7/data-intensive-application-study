@@ -1,4 +1,4 @@
-#10. 일괄 처리(Batch processing)
+# 10. 일괄 처리(Batch processing)
 * 세 가지 시스템
     * Services(Online systems)
         * 서비스는 클라이언트로부터 요청이나 지시가 올 때까지 기다린다.
