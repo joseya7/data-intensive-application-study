@@ -45,12 +45,12 @@ cat /var/log/nginx/access.log |   #1
     sort -r -n         |          #4
     head -n 5          |          #6
 ```
-\#1. `cat /var/log/nginx/access.log` : 로그를 읽어들인다.
-\#2. `awk '{print $7}'` :`/css/typgraphy.css/` 를 출력
-\#3. `sort` : 요청 URL을 알파벳 순으로 정렬. 
-\#4. `uniq -c`:  중복 제거 및 중복 횟수를 함께 출력
-\#5. `sort -r -n` : 요청 URL을 요청 수 기준으로 다시 정렬.
-\#6. `head` : 맨 앞 5줄만 출력
+* \#1. `cat /var/log/nginx/access.log` : 로그를 읽어들인다.
+* \#2. `awk '{print $7}'` :`/css/typgraphy.css/` 를 출력
+* \#3. `sort` : 요청 URL을 알파벳 순으로 정렬. 
+* \#4. `uniq -c`:  중복 제거 및 중복 횟수를 함께 출력
+* \#5. `sort -r -n` : 요청 URL을 요청 수 기준으로 다시 정렬.
+* \#6. `head` : 맨 앞 5줄만 출력
 * 위의 유닉스 쉘의 결과는 아래와 같이 나올 수 있다.
     ```
     4189 /favicon.ico
@@ -75,11 +75,11 @@ cat /var/log/nginx/access.log |   #1
     top5.each{|count, url| puts "#{count} #{url}" }                     #5
     ```
 
-\#1. `counts = Hash.new(0)`  : 각 URL이 몇 번 나왔는지 저장할 해시 테이블이다. 
-\#2. `url = line.split[6] ` : 공백으로 분리, URL이 있는 6번째 인덱스 추출
-\#3. `counts[url] += 1 ` : URL의 카운트를 증가
-\#4. `coutns.map{|url, count| [count, url]}.sort.reserve[0...5]`: 해시 테이블을 내림차순 정렬
-\#5. `top5.each{|count, url| puts "#{count} #{url}" }  ` : 상위 5개 항목을 출력
+* \#1. `counts = Hash.new(0)`  : 각 URL이 몇 번 나왔는지 저장할 해시 테이블이다. 
+* \#2. `url = line.split[6] ` : 공백으로 분리, URL이 있는 6번째 인덱스 추출
+* \#3. `counts[url] += 1 ` : URL의 카운트를 증가
+* \#4. `coutns.map{|url, count| [count, url]}.sort.reserve[0...5]`: 해시 테이블을 내림차순 정렬
+* \#5. `top5.each{|count, url| puts "#{count} #{url}" }  ` : 상위 5개 항목을 출력
 * 위 두 (유닉스 vs 루비)의 결과는 차이가 없지만, 가장 큰 다른 차이점이 있다 : *실행 흐름*(execution flow). (대용량 파일에서 확연한 차이.)
 
 
